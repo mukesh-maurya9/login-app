@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+</head>
+{{!-- {{>main}} --}}
+<style>
+    body {
+        background-image:url("https://i.pinimg.com/564x/8d/5d/25/8d5d2519a405d7fe4c3a5a15ee121a06.jpg")
+    }
+    .signup {
+        border: 5px solid rgb(165, 98, 98);
+        border-radius: 15px;
+    }
+    .background{
+        background: lightslategrey;
+        color: white;
+        border-radius: 15px;
+
+    }
+</style>
+
+<body>
+ 
+    <div>
+        {{!-- signup form --}}
+        <div class="container">
+            <div class="row">
+                <div class="offset-md-5 col-md-5"><br /><br />
+                    <h2 class="text text-danger">{{alert}}</h2>
+                    <h2 class="text text-success">{{alert}}</h2>
+                    <center>
+                        <h2 class="background">Sign Up</h2>
+                    </center>
+                    <div class="background">
+                        <form onsubmit="return myFunc();" class="px-4 py-3 signup" action="/auth/signup" method="post">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="checkfirst" class="form-control" name="firstName"
+                                    placeholder="Enter first name" value="">
+                                <span id="message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="checklast" class="form-control" name="lastName"
+                                    placeholder="Enter last name" value="">
+                                <span id="message2"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" name="email" id="Email1" required="required"
+                                    placeholder="email@example.com" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" id="password1"
+                                    placeholder="Password" value="">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="number" class="form-control" name="phone" id="phone"
+                                    placeholder="Enter number" value="">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                            <div class="dropdown-divider"></div>Already have an account?
+                            <a href="/auth/login"> Log In</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br><br><br><br><br><br><br>
+       
+        <script>
+            /// validation of firstName, lastName, email, password and phone_number
+
+            function myFunc() {
+                var regName = /^[a-zA-Z]+$/;
+                var name = document.getElementById('checkfirst').value;
+                var name_last = document.getElementById('checklast').value;
+                var password_1 = document.getElementById('password1').value;
+                var password_2 = document.getElementById('password2').value;
+                var phone_number = document.getElementById('phone').value;
+
+                if (name == "") {
+                    alert('Please enter your first name');
+                    return false;
+                }
+
+                if (name_last == "") {
+                    alert('Please enter your last name');
+                    return false
+                }
+
+                if (!regName.test(name)) {
+                    alert('Only alphabtes are allowed.');
+                    document.getElementById('checkfirst').focus();
+                    return false;
+                }
+
+                if (!regName.test(name_last)) {
+                    alert('Only alphabtes are allowed.');
+                    document.getElementById('checklast').focus();
+                    return false;
+                }
+
+                if (password_1 == "") {
+                    alert('Password cannot be blank');
+                    return false;
+                }
+
+                if (password_1.length < 6 && password_1.length > 25) {
+                    alert('Password should be between 6 and 25 ')
+                }
+
+                if (password_1 != password_2) {
+                    alert('Password mismatch');
+                    document.getElementById('password1').focus();
+                    return false;
+                }
+
+                if (phone_number.length < 10 || phone_number.length > 10) {
+                    alert('Phone number must be 10 digits');
+                    return false;
+                }
+
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>
