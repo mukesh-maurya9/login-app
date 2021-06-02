@@ -1,7 +1,5 @@
-var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/TestDB9");
-
-// Online Mongodb
-// mongoose.connect(
-//   "mongodb+srv://Admin:msraj@bookshelf.jpwaq.mongodb.net/BookShelf?retryWrites=true&w=majority"
-// );
+var mongoose = require("mongoose");
+// mongoose.connect("mongodb://localhost:27017/TestDB9");
+mongoose.connect(
+  "mongodb+srv://Admin:msraj07m@cluster0.1b7mx.mongodb.net/TestDB?retryWrites=true&w=majority"
+);
